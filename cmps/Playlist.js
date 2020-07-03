@@ -18,7 +18,7 @@ window.cmps.Playlist = (() => {
     }
   }
 
-  return {
+  return Vue.component('Playlist', {
     props: {
       number: {
         type: Number,
@@ -45,10 +45,12 @@ window.cmps.Playlist = (() => {
         <h2>{{ title }}</h2>
         <a :href="url" target="_blank" rel="noopener">Play on Spotify</a>
         <p>{{ desc }}</p>
-        <ul v-for="track in tracks" :key="track">
-          <li>{{ track }} </li>
+        <ul>
+          <li v-for="track in tracks" :key="track">
+            <a :href="track" target="_blank" rel="noopener">Play on Spotify</a>
+          </li>
         </ul>
       </div>
     `,
-  }
+  })
 })()

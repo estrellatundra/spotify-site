@@ -26,7 +26,7 @@
         <h1>viaje</h1>
       </header>
       <main class="t-sans">
-        <Playlist :number="1" />
+        <Playlist v-for="number in 2" :key="number" :number="number" />
       </main>
       <footer class="t-sans">
         <div class="legal">&copy; {{ (new Date()).getFullYear() }}</div>
