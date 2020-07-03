@@ -1,12 +1,21 @@
 window.cmps.Playlist = (() => {
   async function getPlaylistMeta(playlistNum) {
-    const { data } = await fetch(`/playlists/${playlistNum}`)
-    console.log('fetched')
-    debugger
+    const raw = await fetch(`/playlists/${playlistNum}.txt`).then((res) => {
+      return res.text()
+    })
+    return parsePlaylistMeta(raw)
   }
 
   function parsePlaylistMeta(raw) {
-    console.log('parse raw')
+    // Map file format to obj
+    let splitRaw = raw.split('---')
+
+    return {
+      title: splitRaw[0].trim(),
+      url: splitRaw[1].trim(),
+      desc: splitRaw[2].trim(),
+      tracks: splitRaw[3].split(/\r?\n/).filter((x) => x !== ''),
+    }
   }
 
   return {
@@ -18,16 +27,28 @@ window.cmps.Playlist = (() => {
     },
     data() {
       return {
-        playlistMeta: null,
+        title: '',
+        url: '',
+        desc: '',
+        tracks: [],
       }
     },
     async created() {
-      this.playlistMeta = await getPlaylistMeta(this.$props.number)
+      const data = await getPlaylistMeta(this.$props.number)
+      this.title = data.title
+      this.url = data.url
+      this.desc = data.desc
+      this.tracks = data.tracks
     },
     template: `
-      <ul>
-        <li>Something here</li>
-      </ul>
+      <div class="playlist">
+        <h2>{{ title }}</h2>
+        <a :href="url" target="_blank" rel="noopener">Play on Spotify</a>
+        <p>{{ desc }}</p>
+        <ul v-for="track in tracks" :key="track">
+          <li>{{ track }} </li>
+        </ul>
+      </div>
     `,
   }
 })()
