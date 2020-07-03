@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- Deps -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+
+    <!-- Vue cmps -->
+    <script>
+      window.cmps = {}
+    </script>
+    <script src="cmps/Playlist.js"></script>
+
+    <!-- App boot -->
+    <script src="js/app.js"></script>
+
+    <title>viaje</title>
+  </head>
+
+  <body>
+    <div class="site_wrap" id="app">
+      <header class="t-sans">
+        <h1>viaje</h1>
+      </header>
+      <main class="t-sans">
+        <Playlist :number="1" />
+      </main>
+      <footer class="t-sans">
+        <div class="legal">&copy; <span id="footer_date"></span></div>
+        <div class="credit">
+          made with ❤<br />
+          by <a href="http://instagram.com/backwardfeet">backwardfeet</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
