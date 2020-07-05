@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'
+
 exports.handler = function (event, context, callback) {
   // EVENT
   // {
