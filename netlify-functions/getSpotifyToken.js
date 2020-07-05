@@ -1,6 +1,4 @@
 exports.handler = function (event, context, callback) {
-  import fetch from 'node-fetch'
-
   // EVENT
   // {
   //   "path": "Path parameter",
@@ -10,6 +8,8 @@ exports.handler = function (event, context, callback) {
   //   "body": "A JSON string of the request payload."
   //   "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encode"
   // }
+
+  const fetch = require('node-fetch')
 
   callback(null, {
     statusCode: 200,
