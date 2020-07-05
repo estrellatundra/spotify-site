@@ -1,4 +1,4 @@
-window.cmps.Playlist = (() => {
+window.viaje.cmps.Playlist = (() => {
   async function getPlaylistMeta(playlistNum) {
     const raw = await fetch(`/playlists/${playlistNum}.txt`).then((res) => {
       return res.text()
