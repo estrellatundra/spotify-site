@@ -1,6 +1,6 @@
-import fetch from 'node-fetch'
-
 exports.handler = function (event, context, callback) {
+  import fetch from 'node-fetch'
+
   // EVENT
   // {
   //   "path": "Path parameter",
